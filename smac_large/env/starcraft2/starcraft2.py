@@ -1011,11 +1011,6 @@ class StarCraft2Env(MultiAgentEnv):
 
 
     def delete_trace_mat(self, A):
-        '''
-            输入的A必须是narray的类型 不能是matrix类型 不然算出来虽然不会报错 但是会有逻辑错误
-            这个函数的目的在于：
-                将一个矩阵的对角线给去掉 然后返回去掉主对角线上的剩余矩阵
-        '''
         m = A.shape[0]
         strided = np.lib.stride_tricks.as_strided
         s0, s1 = A.strides
@@ -1024,11 +1019,6 @@ class StarCraft2Env(MultiAgentEnv):
         return out
 
     def delete_multi_trace_mat(self, X):
-        '''  输入的X必须是narray的类型 不能是matrix类型 不然算出来虽然不会报错 但是会有逻辑错误
-            目的在于把矩阵按照主对角线方向 来将对应的元素给删掉
-        :param X: 需要删除主对角线元素的矩阵
-        :return: 返回处理过后的矩阵
-        '''
         m = X.shape[0]
         strided = np.lib.stride_tricks.as_strided
         s0, s1 = X.strides
