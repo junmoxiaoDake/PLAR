@@ -91,7 +91,7 @@ class PLARLearner:
             target_mac_out = th.stack(target_mac_out, dim=1)  # Concat across time
         else:
             target_mac_out = th.stack(target_mac_out[1:], dim=1)
-            # Mask out unavailable actions  挡住那些不可用的动作
+            # Mask out unavailable actions
             target_mac_out[avail_actions[:, 1:] == 0] = -9999999
 
 
